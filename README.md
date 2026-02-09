@@ -22,19 +22,23 @@ AI와 메타인지 대화를 나누는 [Claude Code](https://docs.anthropic.com/
 
 ## 설치
 
-`.claude/skills/meta-dialogue/` 디렉토리를 Claude Code 프로젝트에 복사합니다.
+### 1. npx degit (권장)
+
+터미널에서 아래 명령어를 실행하면 설치됩니다.
 
 ```bash
-# 프로젝트 루트에서
-mkdir -p .claude/skills/meta-dialogue
-cp skill.md .claude/skills/meta-dialogue/skill.md
+npx -y degit gongebb/meta-dialogue/meta-dialogue ~/.claude/skills/meta-dialogue
 ```
 
-또는 이 레포를 클론해서 직접 복사:
+> `npx`가 없다면 [Node.js](https://nodejs.org/)를 먼저 설치해주세요.
+
+### 2. 직접 다운로드
+
+이 레포지토리를 다운로드한 뒤, `meta-dialogue` 폴더를 `~/.claude/skills/`에 복사합니다.
 
 ```bash
 git clone https://github.com/gongebb/meta-dialogue.git
-cp -r meta-dialogue/.claude/skills/meta-dialogue ~/.claude/skills/
+cp -r meta-dialogue/meta-dialogue ~/.claude/skills/
 ```
 
 ## 사용법
@@ -68,7 +72,7 @@ Claude Code에서 `/meta-dialogue` 명령어로 호출합니다.
 
 ## 스킬 상세
 
-질문 원칙, DO/DON'T 가이드, 대화 예시 등 상세 내용은 [skill.md](.claude/skills/meta-dialogue/skill.md)를 참고하세요.
+질문 원칙, DO/DON'T 가이드, 대화 예시 등 상세 내용은 [SKILL.md](meta-dialogue/SKILL.md)를 참고하세요.
 
 ## 요구사항
 
