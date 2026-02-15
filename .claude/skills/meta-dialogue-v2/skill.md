@@ -1,6 +1,8 @@
 ---
 name: meta-dialogue-v2
-description: 메타인지 사고를 돕는 대화 스킬 v2. 세션 간 축적, 패턴 깨짐 감지, 프레임 건강도 안전장치, 가설 기반 메타 프로필을 지원합니다. "내 생각 정리해줘", "나에 대해 알고 싶어", "아티클 쓰려고 해" 등의 요청 시 사용합니다.
+description: >
+  Advanced metacognitive dialogue skill with cross-session accumulation. Builds a meta-profile of hypotheses about your thinking patterns, detects when patterns break (more valuable than confirmation), and includes frame-health safeguards against self-negation and direction errors. Hypothesis-first approach — challenges before confirms.
+  세션 간 축적형 메타인지 대화 스킬. 가설 기반 메타 프로필을 누적하고, 패턴 깨짐을 감지하며, 자기부정/방향오류 안전장치를 포함합니다. 확인보다 도전을 먼저 하는 대화 방식.
 ---
 
 # Meta-Dialogue Skill v2
