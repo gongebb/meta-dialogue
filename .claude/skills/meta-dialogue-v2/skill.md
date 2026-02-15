@@ -374,12 +374,20 @@ v1에도 "수단 vs 목적 구분" 원칙이 있지만, v2에서는 방향 오�
 
 ## 참조 파일
 
+### 사용자 데이터 (세션 중 생성/관리)
+
 | 파일 | 용도 | 필수 |
 |------|------|------|
 | `context/me/meta-dialogue-sessions/_meta-profile.md` | 메타 프로필 (가설, 패턴, 사각지대) | 2회차부터 자동 생성 |
 | `context/me/meta-dialogue-sessions/*.md` | 개별 세션 기록 | 매 세션 자동 저장 |
 | `context/me/about-me.md` | 사용자 맥락 (사고 원칙, 커리어) | 선택 |
-| v1 SKILL.md | v1 원칙 (상세 참조) | v1 사용 시 |
+
+### 템플릿 (처음 시작할 때 참고)
+
+| 파일 | 용도 |
+|------|------|
+| `references/meta-profile-template.md` | 메타 프로필 초기 구조 + 작성 가이드 |
+| `references/session-record-template.md` | 세션 기록 형식 + 각 섹션 작성 가이드 |
 
 ---
 
