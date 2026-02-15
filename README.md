@@ -22,12 +22,12 @@ AI와 메타인지 대화를 나누는 [Claude Code](https://docs.anthropic.com/
 
 ## 설치
 
-### 1. npx degit (권장)
+### 1. npx skills (권장)
 
 터미널에서 아래 명령어를 실행하면 설치됩니다.
 
 ```bash
-npx -y degit gongebb/meta-dialogue/meta-dialogue ~/.claude/skills/meta-dialogue
+npx skills add https://github.com/gongebb/meta-dialogue --skill meta-dialogue -g -a claude-code -y
 ```
 
 > `npx`가 없다면 [Node.js](https://nodejs.org/)를 먼저 설치해주세요.
