@@ -37,11 +37,11 @@ v2는 세션을 거듭할수록 메타 프로필이 쌓여서 대화가 깊어�
 meta-dialogue/
 ├── README.md
 ├── LICENSE
-├── meta-dialogue/              # v1 스킬
-│   └── SKILL.md                #   질문 원칙, DO/DON'T, 대화 예시
-└── .claude/skills/
+└── skills/
+    ├── meta-dialogue/          # v1 스킬
+    │   └── SKILL.md            #   질문 원칙, DO/DON'T, 대화 예시
     └── meta-dialogue-v2/       # v2 스킬
-        ├── skill.md            #   v1 원칙 + 축적/안전장치/추론 가이드
+        ├── SKILL.md            #   v1 원칙 + 축적/안전장치/추론 가이드
         └── references/         #   시작할 때 참고할 템플릿
             ├── meta-profile-template.md    # 메타 프로필 초기 구조
             └── session-record-template.md  # 세션 기록 형식
@@ -65,10 +65,13 @@ v2를 사용하면 프로젝트 내에 다음 구조가 자동으로 만들어�
 ### 1. npx skills (권장)
 
 ```bash
+# v1 + v2 모두 설치
+npx skills add https://github.com/gongebb/meta-dialogue -g -a claude-code -y
+
 # v1만 설치
 npx skills add https://github.com/gongebb/meta-dialogue --skill meta-dialogue -g -a claude-code -y
 
-# v2 설치
+# v2만 설치
 npx skills add https://github.com/gongebb/meta-dialogue --skill meta-dialogue-v2 -g -a claude-code -y
 ```
 
@@ -80,11 +83,10 @@ npx skills add https://github.com/gongebb/meta-dialogue --skill meta-dialogue-v2
 git clone https://github.com/gongebb/meta-dialogue.git
 
 # v1
-cp -r meta-dialogue/meta-dialogue ~/.claude/skills/
+cp -r meta-dialogue/skills/meta-dialogue ~/.claude/skills/
 
 # v2
-mkdir -p ~/.claude/skills/meta-dialogue-v2
-cp -r meta-dialogue/.claude/skills/meta-dialogue-v2/* ~/.claude/skills/meta-dialogue-v2/
+cp -r meta-dialogue/skills/meta-dialogue-v2 ~/.claude/skills/
 ```
 
 ## 사용법
@@ -129,10 +131,10 @@ v2는 이전 세션의 가설을 바탕으로 시작하되, 기존 패턴에 끼
 
 ## 스킬 상세
 
-- v1 원칙, 대화 예시: [meta-dialogue/SKILL.md](meta-dialogue/SKILL.md)
-- v2 축적 구조, 안전장치: [.claude/skills/meta-dialogue-v2/skill.md](.claude/skills/meta-dialogue-v2/skill.md)
-- 메타 프로필 템플릿: [references/meta-profile-template.md](.claude/skills/meta-dialogue-v2/references/meta-profile-template.md)
-- 세션 기록 템플릿: [references/session-record-template.md](.claude/skills/meta-dialogue-v2/references/session-record-template.md)
+- v1 원칙, 대화 예시: [skills/meta-dialogue/SKILL.md](skills/meta-dialogue/SKILL.md)
+- v2 축적 구조, 안전장치: [skills/meta-dialogue-v2/SKILL.md](skills/meta-dialogue-v2/SKILL.md)
+- 메타 프로필 템플릿: [references/meta-profile-template.md](skills/meta-dialogue-v2/references/meta-profile-template.md)
+- 세션 기록 템플릿: [references/session-record-template.md](skills/meta-dialogue-v2/references/session-record-template.md)
 
 ## 요구사항
 
