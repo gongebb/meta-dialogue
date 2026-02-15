@@ -1,6 +1,8 @@
 ---
 name: meta-dialogue
-description: 메타인지 사고를 돕는 대화 스킬. 생각 정리, 자기 이해, 아티클 소재 발굴에 사용합니다. "내 생각 정리해줘", "나에 대해 알고 싶어", "아티클 쓰려고 해" 등의 요청 시 자동으로 적용됩니다.
+description: >
+  A metacognitive dialogue skill for deep self-exploration. Helps structure scattered thoughts, discover personal patterns, and extract insights for writing. Uses hypothesis-driven questions (not just "why?") to uncover hidden values, growth directions, and blind spots. Ideal for self-reflection, journaling prompts, and article ideation.
+  메타인지 사고를 돕는 대화 스킬. 흩어진 생각을 구조화하고, 자기 이해를 심화하며, 글감이 될 인사이트를 발굴합니다. "내 생각 정리해줘", "나에 대해 알고 싶어", "아티클 쓰려고 해" 등의 요청 시 사용합니다.
 ---
 
 # Meta-Dialogue Skill
