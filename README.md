@@ -20,34 +20,87 @@ AI와 메타인지 대화를 나누는 [Claude Code](https://docs.anthropic.com/
 - 여러 생각 사이의 패턴과 연결을 발견하게 돕습니다
 - 현재 상태 분석에서 끝나지 않고, 성장 방향을 엽니다
 
+## 스킬 구성
+
+이 레포에는 두 가지 스킬이 있습니다.
+
+| 스킬 | 설명 | 추천 대상 |
+|------|------|----------|
+| **meta-dialogue** (v1) | 단일 세션 대화. 가설 기반 질문으로 생각을 구조화 | 처음 써보는 사람 |
+| **meta-dialogue-v2** | v1 + 세션 간 축적, 패턴 깨짐 감지, 프레임 건강도 안전장치 | 반복 사용자 |
+
+v2는 세션을 거듭할수록 메타 프로필이 쌓여서 대화가 깊어집니다.
+
+## 폴더 구조
+
+```
+meta-dialogue/
+├── README.md
+├── LICENSE
+├── meta-dialogue/              # v1 스킬
+│   └── SKILL.md                #   질문 원칙, DO/DON'T, 대화 예시
+└── .claude/skills/
+    └── meta-dialogue-v2/       # v2 스킬
+        ├── skill.md            #   v1 원칙 + 축적/안전장치/추론 가이드
+        └── references/         #   시작할 때 참고할 템플릿
+            ├── meta-profile-template.md    # 메타 프로필 초기 구조
+            └── session-record-template.md  # 세션 기록 형식
+```
+
+### v2 사용 시 생성되는 파일
+
+v2를 사용하면 프로젝트 내에 다음 구조가 자동으로 만들어집니다.
+
+```
+{프로젝트}/context/me/
+├── meta-dialogue-sessions/
+│   ├── _meta-profile.md        # 가설, 패턴, 사각지대 (세션마다 업데이트)
+│   ├── 2026-02-08-topic-a.md   # 세션 기록
+│   └── 2026-02-09-topic-b.md
+└── about-me.md                 # (선택) 사고 원칙, 커리어 맥락
+```
+
 ## 설치
 
 ### 1. npx skills (권장)
 
-터미널에서 아래 명령어를 실행하면 설치됩니다.
-
 ```bash
+# v1만 설치
 npx skills add https://github.com/gongebb/meta-dialogue --skill meta-dialogue -g -a claude-code -y
+
+# v2 설치
+npx skills add https://github.com/gongebb/meta-dialogue --skill meta-dialogue-v2 -g -a claude-code -y
 ```
 
 > `npx`가 없다면 [Node.js](https://nodejs.org/)를 먼저 설치해주세요.
 
 ### 2. 직접 다운로드
 
-이 레포지토리를 다운로드한 뒤, `meta-dialogue` 폴더를 `~/.claude/skills/`에 복사합니다.
-
 ```bash
 git clone https://github.com/gongebb/meta-dialogue.git
+
+# v1
 cp -r meta-dialogue/meta-dialogue ~/.claude/skills/
+
+# v2
+mkdir -p ~/.claude/skills/meta-dialogue-v2
+cp -r meta-dialogue/.claude/skills/meta-dialogue-v2/* ~/.claude/skills/meta-dialogue-v2/
 ```
 
 ## 사용법
 
-Claude Code에서 `/meta-dialogue` 명령어로 호출합니다.
+### v1
 
 ```
 /meta-dialogue 요즘 이런 생각을 해...
 /meta-dialogue [글 링크와 함께] 이 글로 대화하고 싶어
+```
+
+### v2
+
+```
+/meta-dialogue-v2 최근 팀 회고에서 느낀 건데...
+/meta-dialogue-v2 나에 대해 더 알고 싶어
 ```
 
 자연어로도 작동합니다:
@@ -60,19 +113,26 @@ Claude Code에서 `/meta-dialogue` 명령어로 호출합니다.
 
 ## 대화 흐름
 
+### v1
+
 ```
-출발점 파악 → 탐색적 대화 (3-5라운드) → 패턴 인식 → 성장 방향 탐색 → 결과물 제안
+출발점 파악 → 탐색적 대화 → 패턴 인식 → 성장 방향 탐색 → 결과물 제안
 ```
 
-1. 최근 어떤 생각을 하고 있는지, 왜 이 대화를 시작했는지 파악
-2. 가설 기반 질문으로 생각의 연결 고리를 발견
-3. 여러 생각에서 반복되는 주제, 숨겨진 가치관을 인식
-4. "여기서 어디로 갈 수 있는가"를 탐색
-5. 아티클 소재, 자기 이해 요약, 다음 대화 주제 등을 제안
+### v2
+
+```
+메타 프로필 로드 → 가설 기반 진입 → 탐색 → 패턴 확인/깨짐 감지 → 결과물 + 프로필 업데이트
+```
+
+v2는 이전 세션의 가설을 바탕으로 시작하되, 기존 패턴에 끼워맞추지 않습니다. 패턴이 깨지는 순간이 가장 가치 있는 발견입니다.
 
 ## 스킬 상세
 
-질문 원칙, DO/DON'T 가이드, 대화 예시 등 상세 내용은 [SKILL.md](meta-dialogue/SKILL.md)를 참고하세요.
+- v1 원칙, 대화 예시: [meta-dialogue/SKILL.md](meta-dialogue/SKILL.md)
+- v2 축적 구조, 안전장치: [.claude/skills/meta-dialogue-v2/skill.md](.claude/skills/meta-dialogue-v2/skill.md)
+- 메타 프로필 템플릿: [references/meta-profile-template.md](.claude/skills/meta-dialogue-v2/references/meta-profile-template.md)
+- 세션 기록 템플릿: [references/session-record-template.md](.claude/skills/meta-dialogue-v2/references/session-record-template.md)
 
 ## 요구사항
 
