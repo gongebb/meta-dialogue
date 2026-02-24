@@ -90,6 +90,17 @@ cp -r meta-dialogue/skills/meta-dialogue ~/.claude/skills/
 cp -r meta-dialogue/skills/meta-dialogue-v2 ~/.claude/skills/
 ```
 
+## 설정 (v2)
+
+v2는 세션 기록과 메타 프로필을 파일로 저장합니다. CLAUDE.md에 저장 경로를 설정하세요:
+
+```markdown
+# ~/.claude/CLAUDE.md 또는 프로젝트 CLAUDE.md에 추가
+meta-dialogue 저장 경로: /your/path/here
+```
+
+설정이 없으면 첫 세션에서 물어봅니다.
+
 ## 사용법
 
 ### v1
